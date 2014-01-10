@@ -30,5 +30,14 @@ describe('Aka', function() {
 			//t.name.should.equal('zip code');
 		});
 	})
+	describe('similar', function(){
+		it('should return the list of synonyms of a word', function(){
+			var similar_words = akaObj.similarTo('cost');
+			console.log("Similar terms to cost are: ", similar_words);
+			similar_words.should.be.an.instanceOf(Array);
+			similar_words.length.should.equal(4);
+			similar_words.indexOf('cost').should.equal(1);
+		})
+	})
 });
 

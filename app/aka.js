@@ -18,10 +18,9 @@ var Aka = function(terms) {
 	});
 };
 
-Aka.prototype.getMember = function(index){
+Aka.prototype.getMember = function(index) {
 	return this.terms[index];
 };
-
 
 //Check if term1.elements intersection term2.elements is not empty and then this terms are equivalent.
 Aka.prototype.equivalent = function(word1, word2) {
@@ -46,4 +45,14 @@ Aka.prototype.equivalent = function(word1, word2) {
 	 return undefined;
 	 */
 }
+
+Aka.prototype.similarTo = function(word) {
+	var self = this;
+	for (var t in self.terms) {
+		if (self.terms[t].isMember(word)) {
+			return Object.keys(self.terms[t].members);
+		}
+	}
+}
+
 exports.Aka = Aka;
