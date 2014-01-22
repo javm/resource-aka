@@ -42,4 +42,20 @@ set.intersection = function(s, t) {
 	return false;
 };
 
+set.union = function(s, t) {
+	var p = null, q = null;
+	if (s.size() > t.size()) {
+		p = s;
+		q = t;
+	} else {
+		p = t;
+		q = s;
+	}
+	for (var i in q.members) {
+		//console.log(q.members[i]);
+		p.members[i] = 1;
+	}
+	return p;
+}
+
 exports.Set = Set;

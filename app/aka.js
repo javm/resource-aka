@@ -48,11 +48,27 @@ Aka.prototype.equivalent = function(word1, word2) {
 
 Aka.prototype.similarTo = function(word) {
 	var self = this;
+	self.reduce();
 	for (var t in self.terms) {
 		if (self.terms[t].isMember(word)) {
 			return Object.keys(self.terms[t].members);
 		}
 	}
 }
+
+
+Aka.prototype.reduce = function(){
+	var self = this;
+	var s = new Set();
+	for(var i=0; i < self.terms.length -1 ; i++){
+		var a = self.terms[i];
+		var b = self.terms[i+1];
+		if(self.equivalent(a, b)){
+			self.terms[i] = s.union(a,b);
+			self.terms.splice(i+1, 1);
+		}
+	}
+}
+
 
 exports.Aka = Aka;

@@ -12,7 +12,13 @@ var price = {
 	'name' : 'price',
 	'members' : ['price', 'cost', 'charge', 'fee']
 };
-var terms = [zip_code, price]
+
+var fee = {
+	'name' : 'fee',
+	'members' : ['fee', 'fare', 'amount']
+}
+
+var terms = [zip_code, price, fee]
 var akaObj = new Aka(terms);
 
 //console.log(akaObj);
@@ -35,7 +41,7 @@ describe('Aka', function() {
 			var similar_words = akaObj.similarTo('cost');
 			console.log("Similar terms to cost are: ", similar_words);
 			similar_words.should.be.an.instanceOf(Array);
-			similar_words.length.should.equal(4);
+			similar_words.length.should.equal(6);
 			similar_words.indexOf('cost').should.equal(1);
 		})
 	})
